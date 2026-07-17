@@ -1,0 +1,2 @@
+Cmnd_Alias MC_SERVER_CONTROL = /usr/bin/systemctl start server2-vanilla.service, /usr/bin/systemctl stop server2-vanilla.service, /usr/bin/systemctl restart server2-vanilla.service
+mcadminbot ALL=(root) NOPASSWD: MC_SERVER_CONTROL

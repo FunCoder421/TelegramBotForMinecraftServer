@@ -1,0 +1,32 @@
+[Unit]
+Description=Minecraft Telegram Admin Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mcadminbot
+Group=mcadminbot
+SupplementaryGroups=systemd-journal
+WorkingDirectory=/opt/mc-admin-bot
+EnvironmentFile=/etc/mc-admin-bot.env
+ExecStart=/opt/mc-admin-bot/venv/bin/python /opt/mc-admin-bot/bot.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+
+# Hardening. Sudo remains available only for exact commands allowed in sudoers.
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+LockPersonality=true
+UMask=0077
+StateDirectory=mc-admin-bot
+
+[Install]
+WantedBy=multi-user.target
